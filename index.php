@@ -90,32 +90,7 @@ $atlet_data = $data['atlet'];
   <title>BGFC</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <style>
-    body {
-      background: linear-gradient(135deg, #000000 0%, #4b0000 50%, #8b0000 100%);
-      color: #fff; min-height: 100vh; font-family: 'Poppins', sans-serif;
-    }
-    .navbar {
-      background: linear-gradient(90deg, #000, #8b0000);
-      box-shadow: 0 2px 10px rgba(255, 0, 0, 0.4);
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 8px 5vw; flex-wrap: wrap;
-    }
-    .container {background-color: rgba(20,20,20,0.8);
-      padding: 20px; border-radius: 10px; box-shadow: 0 0 20px rgba(255,0,0,0.3);}
-    h5,h6 {color: #ff4444; text-shadow: 0 0 5px rgba(255,0,0,0.3);}
-    .list-group-item {background-color:#111;color:#eee;
-      border:1px solid rgba(255,0,0,0.2);transition:all .3s;}
-    .list-group-item:hover {background-color:#330000;transform:scale(1.02);}
-    .list-group-item.active {background:linear-gradient(90deg,#ff0000,#660000);
-      font-weight:bold;}
-    .btn-primary{background:linear-gradient(90deg,#ff0000,#660000);border:none;}
-    .btn-danger{background:linear-gradient(90deg,#ff4444,#990000);border:none;}
-    .btn-success{background:linear-gradient(90deg,#00c853,#006400);border:none;}
-    .btn-warning{background:linear-gradient(90deg,#ffcc00,#cc6600);border:none;color:#000;}
-    input{background:#1c1c1c!important;color:#fff!important;border:1px solid #ff0000!important;}
-    canvas{background:#fff;border-radius:10px;padding:10px;}
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <nav class="navbar navbar-dark">
@@ -192,29 +167,5 @@ $atlet_data = $data['atlet'];
       </div>
     </div>
   </div>
-
-  <script>
-    function toggleForm(id){document.getElementById(id).classList.toggle('d-none');}
-
-    <?php if($atlet_aktif): ?>
-    new Chart(document.getElementById('chartLari'), {
-      type:'line',
-      data:{
-        labels:<?= json_encode(array_column($lari, 'tanggal')) ?>,
-        datasets:[{label:'Waktu Lari',data:<?= json_encode(array_column($lari, 'waktu_lari')) ?>,borderColor:'red',backgroundColor:'rgba(255,0,0,0.3)',fill:false,tension:0.3}]
-      },
-      options:{scales:{y:{reverse:true}}}
-    });
-
-    new Chart(document.getElementById('chartTendangan'), {
-      type:'bar',
-      data:{
-        labels:<?= json_encode(array_column($tendangan, 'tanggal')) ?>,
-        datasets:[{label:'Jumlah Tendangan',data:<?= json_encode(array_column($tendangan, 'jumlah_tendangan')) ?>,backgroundColor:'rgba(255,50,50,0.7)',borderColor:'rgba(255,0,0,1)',borderWidth:1}]
-      },
-      options:{scales:{y:{beginAtZero:true}}}
-    });
-    <?php endif; ?>
-  </script>
 </body>
 </html>
